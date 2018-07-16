@@ -1,3 +1,8 @@
-require'pg'
+require 'pg'
+require './lib/database.rb'
 
-conn = PG::Connection.open(:dbname => 'bookmanager_test')
+describe Database do
+  it "returns all records" do
+    expect(Database.all).not_to be_nil
+  end
+end
