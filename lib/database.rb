@@ -11,4 +11,8 @@ def self.all
     # @list
 end
 
+def self.connection
+  PG.connect :dbname => "bookmanager", :user => "giacomo"
+end
+
 end

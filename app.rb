@@ -1,4 +1,6 @@
 require 'sinatra/base'
+require_relative'./lib/user'
+require_relative'./lib/database'
 
 class BookmarkManager < Sinatra::Base
   get '/' do
@@ -9,8 +11,8 @@ class BookmarkManager < Sinatra::Base
     erb :'users/registration'
   end
   post '/users' do
-    @email = params[:email]
-    @password = params[:password]
+    User.create(params[:email], params[:password])
+    erb :'users/registration'
 
   end
 
