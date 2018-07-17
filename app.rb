@@ -6,6 +6,7 @@ require_relative'./lib/database'
 
 class BookmarkManager < Sinatra::Base
   enable :sessions
+  register Sinatra::Flash
   get '/' do
     'Hello World'
   end
@@ -17,12 +18,12 @@ class BookmarkManager < Sinatra::Base
     User.create(params[:email], params[:password])
     erb :'users/registration'
   end
-  get 'sessions/new' do
+  get '/sessions/new' do
     erb :'users/login'
   end
-  post 'sessions' do
+  post '/sessions' do
     id = User.find(params[:email], params[:password])
-    if id.any?
+    if id != nil
       session[:id] = id
       redirect '/'
     else flash[:notice] = 'Please check your email or password'
