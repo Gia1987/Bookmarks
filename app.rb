@@ -1,3 +1,4 @@
+require 'pg'
 require 'sinatra/base'
 require_relative'./lib/user'
 require_relative'./lib/database'
